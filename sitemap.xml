@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://fodor.org/about/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/javascript/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/post/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/series/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/webassembly/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/series/webassembly/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/blog/webassembly-strings/</loc>
+    <lastmod>2019-12-18T10:23:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/categories/</loc>
+  </url>
+  
+</urlset>
