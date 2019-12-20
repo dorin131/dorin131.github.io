@@ -7,26 +7,44 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Wed, 18 Dec 2019 10:23:46 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2019 21:45:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>JavaScript</title>
-      <link>https://fodor.org/tags/javascript/</link>
-      <pubDate>Wed, 18 Dec 2019 10:23:46 +0000</pubDate>
+      <title>buffered</title>
+      <link>https://fodor.org/tags/buffered/</link>
+      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
       
-      <guid>https://fodor.org/tags/javascript/</guid>
+      <guid>https://fodor.org/tags/buffered/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>WebAssembly</title>
-      <link>https://fodor.org/tags/webassembly/</link>
-      <pubDate>Wed, 18 Dec 2019 10:23:46 +0000</pubDate>
+      <title>channels</title>
+      <link>https://fodor.org/tags/channels/</link>
+      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
       
-      <guid>https://fodor.org/tags/webassembly/</guid>
+      <guid>https://fodor.org/tags/channels/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://fodor.org/tags/go/</link>
+      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>semaphore</title>
+      <link>https://fodor.org/tags/semaphore/</link>
+      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/semaphore/</guid>
       <description></description>
     </item>
     
