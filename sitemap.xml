@@ -48,12 +48,16 @@
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://fodor.org/blog/go-counting-semaphores/</loc>
     <lastmod>2019-12-20T21:45:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://fodor.org/tags/semaphore/</loc>
+=======
+    <loc>https://fodor.org/tags/</loc>
+>>>>>>> fc6896dfd8654afab19408ee026aa991f7b38a80
     <lastmod>2019-12-20T21:45:00+00:00</lastmod>
   </url>
   
