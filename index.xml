@@ -29,7 +29,9 @@ func main() { wg := sync.</description>
       <pubDate>Wed, 18 Dec 2019 10:23:46 +0000</pubDate>
       
       <guid>https://fodor.org/about/</guid>
-      <description>Contact me at </description>
+      <description>I&#39;m a software engineer with extensive work experience in JavaScript, TypeScript, NodeJS, Angular, Docker, Kubernetes and AWS.
+Currently focused on sharing my knowledge through blog posts and vides and learning more about Golang and WebAssembly.
+Contact me at </description>
     </item>
     
   </channel>
