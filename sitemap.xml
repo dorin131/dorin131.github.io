@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://fodor.org/blog/go-avoiding-race-conditions/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/concurrency/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/go/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/post/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/race-conditions/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/</loc>
+    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fodor.org/tags/buffered/</loc>
     <lastmod>2019-12-20T21:45:00+00:00</lastmod>
   </url>
@@ -13,42 +48,12 @@
   </url>
   
   <url>
-    <loc>https://fodor.org/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/series/go/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/go/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://fodor.org/blog/go-counting-semaphores/</loc>
     <lastmod>2019-12-20T21:45:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://fodor.org/post/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://fodor.org/tags/semaphore/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/series/</loc>
-    <lastmod>2019-12-20T21:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/</loc>
     <lastmod>2019-12-20T21:45:00+00:00</lastmod>
   </url>
   
@@ -59,6 +64,10 @@
   
   <url>
     <loc>https://fodor.org/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/series/</loc>
   </url>
   
 </urlset>

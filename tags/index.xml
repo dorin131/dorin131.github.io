@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Fri, 20 Dec 2019 21:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2019 19:30:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>concurrency</title>
+      <link>https://fodor.org/tags/concurrency/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://fodor.org/tags/go/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>race conditions</title>
+      <link>https://fodor.org/tags/race-conditions/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/race-conditions/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>buffered</title>
@@ -27,15 +54,6 @@
       <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/channels/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://fodor.org/tags/go/</link>
-      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/tags/go/</guid>
       <description></description>
     </item>
     

@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Fri, 20 Dec 2019 21:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2019 19:30:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Avoiding race conditions in Go</title>
+      <link>https://fodor.org/blog/go-avoiding-race-conditions/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-avoiding-race-conditions/</guid>
+      <description>Intro Being able to use goroutines correctly is one of the most important skill for a go developer. They give you great power which is easy to invoke but not everyone can grasp the consequences of mishandling it.
+Concurrency-safety A function is said to be concurrency-safe if it can run correctly when called concurrently, meaning from multiple goroutines.
+Race conditions A race condition could occur when two or more goroutines access a resource (variable) concurrently and at least one of them executes a write operation to it.</description>
+    </item>
     
     <item>
       <title>Go: counting semaphores</title>
@@ -29,7 +40,9 @@ func main() { wg := sync.</description>
       <pubDate>Wed, 18 Dec 2019 10:23:46 +0000</pubDate>
       
       <guid>https://fodor.org/about/</guid>
-      <description>Hello!</description>
+      <description>I&#39;m a software engineer with extensive work experience in JavaScript, TypeScript, NodeJS, Angular, Docker, Kubernetes and AWS.
+Currently focused on sharing my knowledge through blog posts and videos and learning more about Golang and WebAssembly.
+Contact me at </description>
     </item>
     
   </channel>

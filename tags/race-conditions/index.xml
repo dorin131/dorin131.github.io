@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go on Dorin Fodor</title>
-    <link>https://fodor.org/tags/go/</link>
-    <description>Recent content in go on Dorin Fodor</description>
+    <title>race conditions on Dorin Fodor</title>
+    <link>https://fodor.org/tags/race-conditions/</link>
+    <description>Recent content in race conditions on Dorin Fodor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Sat, 21 Dec 2019 19:30:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fodor.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fodor.org/tags/race-conditions/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,17 +21,6 @@
       <description>Intro Being able to use goroutines correctly is one of the most important skill for a go developer. They give you great power which is easy to invoke but not everyone can grasp the consequences of mishandling it.
 Concurrency-safety A function is said to be concurrency-safe if it can run correctly when called concurrently, meaning from multiple goroutines.
 Race conditions A race condition could occur when two or more goroutines access a resource (variable) concurrently and at least one of them executes a write operation to it.</description>
-    </item>
-    
-    <item>
-      <title>Go: counting semaphores</title>
-      <link>https://fodor.org/blog/go-counting-semaphores/</link>
-      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/blog/go-counting-semaphores/</guid>
-      <description>Goroutines One of the main features of the Go programming languages is the goroutine. Executing a function as a goroutine lets us run things in parallel which can greatly improve the performance of our application. But you can take parallelism only so far before it actually starts making things slower.
-Unlimited parallelism Your code might be calling a function called doInParallel() as a goroutine in this fashion:
-func main() { wg := sync.</description>
     </item>
     
   </channel>

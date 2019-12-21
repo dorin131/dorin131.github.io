@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>Avoiding race conditions in Go</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>Avoiding race conditions in Go</h2>
+	  <small class="text-secondary mb-5">Posted on December 21, 2019 | 4 minute read</small>
+	  <p><h3 id="intro">Intro</h3>
+<p>Being able to use goroutines correctly is one of the most important skill for a go developer. They give you great power which is easy to invoke but not everyone can grasp the consequences of mishandling it.</p>
+<h3 id="concurrency-safety">Concurrency-safety</h3>
+<p>A function is said to be <em>concurrency-safe</em> if it can run correctly when called concurrently, meaning from multiple goroutines.</p>
+<h3 id="race-conditions">Race conditions</h3>
+<p>A race condition could occur when two or more goroutines access a resource (variable) concurrently and at least one of them executes a write operation to it.</p>
+<p>Even though the execution order within one goroutine is fixed, when several of them are called, we cannot know anymore what operations are executed in what order amongst them, which can produce nasty bugs that are hard to fix and even harder to reproduce.</p>
+<p>One way we can get help from the compiler, is to add the <code>-race</code> flag to your <code>build</code>, <code>run</code> or <code>test</code> commands, which will make it attempt to detect any potential race conditions in your code and report them.</p>
+<p>Below is an example of a program that keeps track of the number of gophers in a zoo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">totalGophers</span> = <span style="color:#ae81ff">0</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">AddGophers</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+  <span style="color:#a6e22e">totalGophers</span> = <span style="color:#a6e22e">totalGophers</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Total: %d\n&#34;</span>, <span style="color:#a6e22e">n</span>)
+}
+
+</code></pre></div><p>The <code>addGophers</code> function above is <strong>not concurrency-safe</strong> because we are writing to a shared variable <code>totalGophers</code> and have no measures in place to prevent race conditions.</p>
+<p>Imagine that two goroutines run in parallel and when they request the <code>totalGophers</code> value they get the same value, this will result in one of them overwriting the gopher number from the other and the total will be completely wrong.</p>
+<h3 id="solutions">Solutions</h3>
+<p>There are two ways to ensure that our functions are concurrency-safe and will not cause a race condition:</p>
+<ul>
+<li>Confining the shared resources in one goroutine and using channels to get requests and send responses.</li>
+<li>Using mutexes to prevent more than one goroutine from reading/writing a shared resource.</li>
+</ul>
+<h4 id="confinement">Confinement</h4>
+<p>Taking the example above, we can confine the <code>totalGophers</code> variable in a separate goroutine and use channels to do our reads and writes. Therefore only <em>one</em> goroutine is going to have access to it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addition</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">total</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">zookeeper</span>()
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">AddGophers</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+  <span style="color:#a6e22e">addition</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">n</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetTotal</span>() {
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Total: %d\n&#34;</span>, <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">total</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">zookeeper</span>() {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">totalGophers</span> = <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">for</span> {
+    <span style="color:#66d9ef">select</span> {
+      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">gophers</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">addition</span>:
+        <span style="color:#a6e22e">totalGophers</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">gophers</span>
+      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">totalGophers</span>:
+    }
+  }
+}
+
+</code></pre></div><p>What we see above is that we confined the <code>totalGophers</code> variable in a goroutine named <code>zookeeper</code> which watches two channels: <code>addition</code> and <code>total</code>.</p>
+<p>Whenever a number of gophers is sent to the <code>addition</code> channel, we add that to the <code>totalGophers</code> and the <code>total</code> channel will always contain the total value.</p>
+<p>This one possible solution to avoid race conditions.</p>
+<h4 id="mutexes">Mutexes</h4>
+<p>Another option is to use mutexes, which are provided by the <code>sync</code> package.</p>
+<p>A mutex will lock an operation in the code so that it can be accessed by only one goroutine. If you have read my previous post on <a href="https://dev.to/dorin/go-counting-semaphores-j4a">Counting Semaphores</a>, then you can regard the mutex as a binary semaphore or a semaphore with a channel that has a buffer of 1.</p>
+<p>Here is how our gopher zoo program would look using this method:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">totalGophers</span> = <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mu</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addGophers</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+  <span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+  <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+  <span style="color:#a6e22e">totalGophers</span> = <span style="color:#a6e22e">totalGophers</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Total: %d\n&#34;</span>, <span style="color:#a6e22e">n</span>)
+}
+</code></pre></div><h3 id="food-for-thought">Food for thought</h3>
+<p>Now that you have an idea of how to go about making your functions concurrency-safe, you should make sure that you always take the required measures.</p>
+<p>The examples above are probably simpler than the application that you are going to work on, so it can get much more complex. Do not be fooled by the apparent simplicity of using mutexes, because in a real life situation it can get more difficult to manage them. One of the pitfalls could be that you are basically making your goroutine execution synchronous, which defeats the purpose of using them in the first place.</p>
+<p>The last thing I want to say is that this should be just a starting point for your research into avoiding race conditions.</p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/go'>go</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/concurrency'>concurrency</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/race%20conditions'>race conditions</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2008–2019 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>
