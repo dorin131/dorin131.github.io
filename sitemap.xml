@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://fodor.org/tags/data-structure/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/go/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/blog/go-linked-list/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/linked-list/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/post/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/</loc>
+    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fodor.org/blog/go-avoiding-race-conditions/</loc>
     <lastmod>2019-12-21T19:30:00+00:00</lastmod>
   </url>
@@ -13,27 +48,7 @@
   </url>
   
   <url>
-    <loc>https://fodor.org/</loc>
-    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/go/</loc>
-    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/post/</loc>
-    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://fodor.org/tags/race-conditions/</loc>
-    <lastmod>2019-12-21T19:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/</loc>
     <lastmod>2019-12-21T19:30:00+00:00</lastmod>
   </url>
   
