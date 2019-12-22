@@ -19,7 +19,7 @@
       
       <guid>https://fodor.org/blog/go-linked-list/</guid>
       <description>Definition  A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. (https://en.wikipedia.org/wiki/Linked_list)
- A little intro This is a fist post from a series on Data Structure implementations in Go. I&#39;m starting with what I consider one of the simplest data structures (I might be proven wrong later) and will continue with some of the other popular ones.</description>
+ A little intro This is a first post from a series on Data Structure implementations in Go. I&#39;m starting with what I consider one of the simplest data structures (I might be proven wrong later) and will continue with some of the other popular ones.</description>
     </item>
     
   </channel>
