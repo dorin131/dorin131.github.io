@@ -3,17 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://fodor.org/tags/data-structure/</loc>
-    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+    <loc>https://fodor.org/tags/browser/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/compile/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/blog/go-to-webassembly/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://fodor.org/</loc>
-    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://fodor.org/tags/go/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/post/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/webassembly/</loc>
+    <lastmod>2019-12-23T17:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/data-structure/</loc>
     <lastmod>2019-12-22T22:50:00+00:00</lastmod>
   </url>
   
@@ -24,16 +54,6 @@
   
   <url>
     <loc>https://fodor.org/tags/linked-list/</loc>
-    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/post/</loc>
-    <lastmod>2019-12-22T22:50:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/</loc>
     <lastmod>2019-12-22T22:50:00+00:00</lastmod>
   </url>
   
