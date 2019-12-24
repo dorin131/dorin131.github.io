@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Go data structures: Queue and Stack</title>
+      <title>Data Structures in Go: Queue and Stack</title>
       <link>https://fodor.org/blog/go-queue-and-stack/</link>
       <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
       
@@ -23,7 +23,7 @@ In our case I have chosen to base these data structures on slices, as this is a 
     </item>
     
     <item>
-      <title>Go data structures: Linked List</title>
+      <title>Data Structures in Go: Linked List</title>
       <link>https://fodor.org/blog/go-linked-list/</link>
       <pubDate>Sun, 22 Dec 2019 22:50:00 +0000</pubDate>
       

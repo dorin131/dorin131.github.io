@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Go data structures: Queue and Stack</title>
+      <title>Data Structures in Go: Queue and Stack</title>
       <link>https://fodor.org/blog/go-queue-and-stack/</link>
       <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
       
@@ -34,7 +34,7 @@ For example, I would like to show you below how you can take your Go code, compi
     </item>
     
     <item>
-      <title>Go data structures: Linked List</title>
+      <title>Data Structures in Go: Linked List</title>
       <link>https://fodor.org/blog/go-linked-list/</link>
       <pubDate>Sun, 22 Dec 2019 22:50:00 +0000</pubDate>
       
