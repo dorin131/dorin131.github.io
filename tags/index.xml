@@ -6,8 +6,8 @@
     <description>Recent content in Tags on Dorin Fodor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 24 Dec 2019 18:45:00 +0000</lastBuildDate>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Wed, 25 Dec 2019 19:48:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>data structure</title>
       <link>https://fodor.org/tags/data-structure/</link>
-      <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
+      <pubDate>Wed, 25 Dec 2019 19:48:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/data-structure/</guid>
       <description></description>
@@ -24,9 +24,18 @@
     <item>
       <title>go</title>
       <link>https://fodor.org/tags/go/</link>
-      <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
+      <pubDate>Wed, 25 Dec 2019 19:48:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tree</title>
+      <link>https://fodor.org/tags/tree/</link>
+      <pubDate>Wed, 25 Dec 2019 19:48:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/tree/</guid>
       <description></description>
     </item>
     
