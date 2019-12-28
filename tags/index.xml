@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Thu, 26 Dec 2019 22:25:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 16:40:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>data structure</title>
       <link>https://fodor.org/tags/data-structure/</link>
-      <pubDate>Thu, 26 Dec 2019 22:25:00 +0000</pubDate>
+      <pubDate>Sat, 28 Dec 2019 16:40:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/data-structure/</guid>
       <description></description>
@@ -24,9 +24,18 @@
     <item>
       <title>go</title>
       <link>https://fodor.org/tags/go/</link>
-      <pubDate>Thu, 26 Dec 2019 22:25:00 +0000</pubDate>
+      <pubDate>Sat, 28 Dec 2019 16:40:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hash table</title>
+      <link>https://fodor.org/tags/hash-table/</link>
+      <pubDate>Sat, 28 Dec 2019 16:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/hash-table/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hash table on Dorin Fodor</title>
+    <link>https://fodor.org/tags/hash-table/</link>
+    <description>Recent content in hash table on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Sat, 28 Dec 2019 16:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/hash-table/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Structures in Go: Hash Table</title>
+      <link>https://fodor.org/blog/go-hash-table/</link>
+      <pubDate>Sat, 28 Dec 2019 16:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-hash-table/</guid>
+      <description>Introduction The time has come to implement one of the most commonly used data structures in software development - the Hash Table!
+A hash table is a data structure that implements an associative array, allowing us to store pairs of keys and values that can be accessed at an expected O(1) time (O(n) - worst case for a bad implementation).
+Personally I love this data structure. It works a bit like magic!</description>
+    </item>
+    
+  </channel>
+</rss>
