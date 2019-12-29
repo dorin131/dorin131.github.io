@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Sat, 28 Dec 2019 16:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2019 18:28:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Algorithms in Go: Insertion Sort</title>
+      <link>https://fodor.org/blog/go-insertion-sort/</link>
+      <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-insertion-sort/</guid>
+      <description>Introduction One of the most basic sorting algorithms is the insertion sort. It is also relatively easy to understand as it closely mimics a common sorting strategy that humans normally use when sorting playing cards in their hand. Even though its time complexity is O(n2) for the worst case, it still performs well for small input sizes. Below is an illustration of the steps taken to perform a merge sort:</description>
+    </item>
     
     <item>
       <title>Data Structures in Go: Hash Table</title>

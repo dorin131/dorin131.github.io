@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>Algorithms in Go: Insertion Sort</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>Algorithms in Go: Insertion Sort</h2>
+	  <small class="text-secondary mb-5">Posted on December 29, 2019 | 2 minute read</small>
+	  <p><h3 id="introduction">Introduction</h3>
+<p>One of the most basic sorting algorithms is the <strong>insertion sort</strong>. It is also relatively easy to understand as it closely mimics a common sorting strategy that humans normally use when sorting playing cards in their hand.
+Even though its time complexity is O(n<!-- raw HTML omitted -->2<!-- raw HTML omitted -->) for the worst case, it still performs well for small input sizes.
+Below is an illustration of the steps taken to perform a merge sort:</p>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/p0vgnuh6wbiv6g0mzpjn.jpg" alt="Insertion Sort illustration"></p>
+<h3 id="implementation">Implementation</h3>
+<p>The main two parts of the code below are the two <code>for</code> loops. In the first one, we go through every element of the initial slice, starting with the second (see (a) above) and we compare it iteratively backwards with the previous elements. Whenever the previous element is greater than the current one, we move it one position forward. Once the inner loop reaches the condition to stop, we assign the value of the current element to precede the last element that was moved forward. By doing this, we end up with a sorted slice.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Sort</span>(<span style="color:#a6e22e">a</span> []<span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+	<span style="color:#75715e">// creating a new slice of a size equal to the original
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">result</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, len(<span style="color:#a6e22e">a</span>))
+	<span style="color:#75715e">// copying elements from the original slice to the new slice
+</span><span style="color:#75715e"></span>	copy(<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">a</span>)
+	<span style="color:#75715e">// iterating through all elements of the slice starting with the second
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">result</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#75715e">// key holds the current value 
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">i</span>]
+		<span style="color:#75715e">// j holds the index of the previous value
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+		<span style="color:#75715e">// we iterate backwards starting with the previous value and compare it with the current value
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">j</span>] &gt; <span style="color:#a6e22e">key</span> {
+			<span style="color:#75715e">// if the previous value is greater then we move it forward one position
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] = <span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">j</span>]
+			<span style="color:#75715e">// we decrement the index for the previous value so that we check the next value backwards
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>
+		}
+		<span style="color:#75715e">// at the end of the inner loop we want to potentially move the current value of the main loop to a new position (if anything was shifted above)
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">result</span>[<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] = <span style="color:#a6e22e">key</span>
+	}
+	<span style="color:#75715e">// returning the sorted slice
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
+}
+</code></pre></div><h3 id="go-specific-decisions">Go specific decisions</h3>
+<p>As Go does not make a copy of the slice after it has been passed into a function, we had to make sure that we are no mutating the underlying array of the original slice and therefore had to create a new slice of the size of the original and copy into it the numbers.</p>
+<h3 id="source-code">Source code</h3>
+<p><a href="https://github.com/dorin131/go-algorithms">https://github.com/dorin131/go-algorithms</a></p>
+<p>Please feel free to make PRs with improvements.</p>
+<p>More algorithms are coming soon!</p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/go'>go</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/algorithms'>algorithms</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/sort'>sort</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/insertion%20sort'>insertion sort</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>
