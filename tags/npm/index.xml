@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on Dorin Fodor</title>
-    <link>https://fodor.org/tags/javascript/</link>
-    <description>Recent content in javascript on Dorin Fodor</description>
+    <title>npm on Dorin Fodor</title>
+    <link>https://fodor.org/tags/npm/</link>
+    <description>Recent content in npm on Dorin Fodor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
     <lastBuildDate>Sun, 08 Dec 2019 12:40:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fodor.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fodor.org/tags/npm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

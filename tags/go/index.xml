@@ -7,20 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Mon, 30 Dec 2019 23:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2019 18:28:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Algorithms in Go: Merge Sort</title>
-      <link>https://fodor.org/blog/go-merge-sort/</link>
-      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/blog/go-merge-sort/</guid>
-      <description>Introduction Following the insertion sort algorithm which we have implemented in the previous post, it was only natural to follow with the implementation of merge sort.
-Compared with the insertion sort which has a time complexity of O(n2), the merge sort is more efficient, with a time complexity of O(n*log(n)). This means that it will be able to handle an increasing number of elements faster. See the graph below for a visual comparison.</description>
-    </item>
     
     <item>
       <title>Algorithms in Go: Insertion Sort</title>

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Mon, 30 Dec 2019 23:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2019 18:28:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>algorithms</title>
       <link>https://fodor.org/tags/algorithms/</link>
-      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
+      <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/algorithms/</guid>
       <description></description>
@@ -24,27 +24,9 @@
     <item>
       <title>go</title>
       <link>https://fodor.org/tags/go/</link>
-      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
+      <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>merge sort</title>
-      <link>https://fodor.org/tags/merge-sort/</link>
-      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/tags/merge-sort/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sort</title>
-      <link>https://fodor.org/tags/sort/</link>
-      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/tags/sort/</guid>
       <description></description>
     </item>
     
@@ -54,6 +36,15 @@
       <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/insertion-sort/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sort</title>
+      <link>https://fodor.org/tags/sort/</link>
+      <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/sort/</guid>
       <description></description>
     </item>
     
@@ -189,6 +180,24 @@
       <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/semaphore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://fodor.org/tags/javascript/</link>
+      <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>npm</title>
+      <link>https://fodor.org/tags/npm/</link>
+      <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/npm/</guid>
       <description></description>
     </item>
     
