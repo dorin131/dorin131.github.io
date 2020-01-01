@@ -193,15 +193,6 @@
     </item>
     
     <item>
-      <title>hello world</title>
-      <link>https://fodor.org/tags/hello-world/</link>
-      <pubDate>Sun, 08 Dec 2019 21:05:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/tags/hello-world/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>javascript</title>
       <link>https://fodor.org/tags/javascript/</link>
       <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
@@ -216,6 +207,15 @@
       <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
       
       <guid>https://fodor.org/tags/npm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hello world</title>
+      <link>https://fodor.org/tags/hello-world/</link>
+      <pubDate>Sat, 07 Dec 2019 21:05:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/tags/hello-world/</guid>
       <description></description>
     </item>
     

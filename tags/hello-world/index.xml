@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Sun, 08 Dec 2019 21:05:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2019 21:05:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/tags/hello-world/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>WebAssembly is easy — a hello world example</title>
       <link>https://fodor.org/blog/webassembly-hello-world/</link>
-      <pubDate>Sun, 08 Dec 2019 21:05:00 +0000</pubDate>
+      <pubDate>Sat, 07 Dec 2019 21:05:00 +0000</pubDate>
       
       <guid>https://fodor.org/blog/webassembly-hello-world/</guid>
       <description>Introduction I like to think of WebAssembly as of Assembly. It gives you a few simple building blocks that you can arrange and combine to create almost anything. It’s a bit like playing with Legos.

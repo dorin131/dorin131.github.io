@@ -173,16 +173,6 @@
   </url>
   
   <url>
-    <loc>https://fodor.org/tags/hello-world/</loc>
-    <lastmod>2019-12-08T21:05:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/blog/webassembly-hello-world/</loc>
-    <lastmod>2019-12-08T21:05:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://fodor.org/blog/how-to-publish-npm-package/</loc>
     <lastmod>2019-12-08T12:40:00+00:00</lastmod>
   </url>
@@ -195,6 +185,16 @@
   <url>
     <loc>https://fodor.org/tags/npm/</loc>
     <lastmod>2019-12-08T12:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/hello-world/</loc>
+    <lastmod>2019-12-07T21:05:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/blog/webassembly-hello-world/</loc>
+    <lastmod>2019-12-07T21:05:00+00:00</lastmod>
   </url>
   
   <url>
