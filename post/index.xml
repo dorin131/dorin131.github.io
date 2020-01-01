@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Sun, 29 Dec 2019 18:28:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 23:45:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Algorithms in Go: Merge Sort</title>
+      <link>https://fodor.org/blog/go-merge-sort/</link>
+      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-merge-sort/</guid>
+      <description>Introduction Following the insertion sort algorithm which we have implemented in the previous post, it was only natural to follow with the implementation of merge sort.
+Compared with the insertion sort which has a time complexity of O(n2), the merge sort is more efficient, with a time complexity of O(n*log(n)). This means that it will be able to handle an increasing number of elements faster. See the graph below for a visual comparison.</description>
+    </item>
     
     <item>
       <title>Algorithms in Go: Insertion Sort</title>
@@ -103,6 +113,16 @@ Race conditions A race condition could occur when two or more goroutines access 
       <description>Goroutines One of the main features of the Go programming languages is the goroutine. Executing a function as a goroutine lets us run things in parallel which can greatly improve the performance of our application. But you can take parallelism only so far before it actually starts making things slower.
 Unlimited parallelism Your code might be calling a function called doInParallel() as a goroutine in this fashion:
 func main() { wg := sync.</description>
+    </item>
+    
+    <item>
+      <title>WebAssembly is easy — a hello world example</title>
+      <link>https://fodor.org/blog/webassembly-hello-world/</link>
+      <pubDate>Sun, 08 Dec 2019 21:05:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/webassembly-hello-world/</guid>
+      <description>Introduction I like to think of WebAssembly as of Assembly. It gives you a few simple building blocks that you can arrange and combine to create almost anything. It’s a bit like playing with Legos.
+As a new technology though, it has a few entry barriers which can put off someone who just wanted to try it out. The code that is usually referred to as the “glue” between WASM and JS is not pretty and requires you to have a more in-depth knowledge of WASM to be able to make sense of or put together.</description>
     </item>
     
     <item>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>WebAssembly is easy — a hello world example</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>WebAssembly is easy — a hello world example</h2>
+	  <small class="text-secondary mb-5">Posted on December 8, 2019 | 3 minute read</small>
+	  <p><h3 id="introduction">Introduction</h3>
+<p>I like to think of <a href="https://webassembly.org/">WebAssembly</a> as of <a href="https://en.wikipedia.org/wiki/Assembly_language">Assembly</a>. It gives you a few simple building blocks that you can arrange and combine to create almost anything. It’s a bit like playing with Legos.</p>
+<p>As a new technology though, it has a few entry barriers which can put off someone who just wanted to try it out. The code that is usually referred to as the “glue” between WASM and JS is not pretty and requires you to have a more in-depth knowledge of WASM to be able to make sense of or put together.</p>
+<p>But there are ways to make developing in WebAssembly easy and enjoyable. I am going to talk about them below.</p>
+<h3 id="your-first-hello-world-in-wasm">Your first “Hello World” in WASM</h3>
+<p>It has become a tradition already to first attempt to write a “Hello World” application in a new language that you are trying out. Usually this will just print out these words to the standard output or in some other visual way.</p>
+<p>In WASM, it is a bit different though. The “Hello World” equivalent is often an addition function, which takes two integer arguments and returns their sum. There is a good reason why we are not attempting to print a string. Strings do not exist in WebAssembly as a type. We can have a string of bytes in memory which have a string encoded but any manipulation will have to be done on a byte level.
+This is our addition function in WASM (text format):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">
+(<span style="color:#a6e22e">module</span>
+  (<span style="color:#a6e22e">func</span> (<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#34;add&#34;</span>) (<span style="color:#a6e22e">param</span> <span style="color:#a6e22e">$n1</span> <span style="color:#a6e22e">i32</span>) (<span style="color:#a6e22e">param</span> <span style="color:#a6e22e">$n2</span> <span style="color:#a6e22e">i32</span>) (<span style="color:#a6e22e">result</span> <span style="color:#a6e22e">i32</span>)
+    <span style="color:#a6e22e">get_local</span> <span style="color:#a6e22e">$n1</span>
+    <span style="color:#a6e22e">get_local</span> <span style="color:#a6e22e">$n2</span>
+    <span style="color:#a6e22e">i32</span>.<span style="color:#a6e22e">add</span>
+  )
+)
+</code></pre></div><p>Let’s break this down quickly and see what’s happening there line by line:</p>
+<ol>
+<li>We declare a new module. All of your WebAssembly code has to be contained in a module.</li>
+<li>Declaring a function which we export with the name <code>add</code>. This will allow us to call it from JS with <code>add()</code>. Then we say that it has two parameters of type 32bit Integer named <code>$n1</code> and <code>$n2</code>. Lastly we say that our punction is going to return another 32bit Integer.</li>
+<li>Put on stack <code>$n1</code> from local memory.</li>
+<li>Put on stack <code>$n2</code> from local memory.</li>
+<li>The built-in <code>i32.add</code> function will take the last two values from the stack, add them and return the sum.</li>
+</ol>
+<p>That it pretty much it. The syntax is not C/JS-like but pretty easy to understand. Every element is a node and we can have nodes nested in other nodes, which act as parameters.</p>
+<h3 id="how-to-run-it">How to run it</h3>
+<p>Now that you have your very first WebAssembly application, you want a quick and easy way to test it. This is where people often stumble.</p>
+<p>To be able to test this function you will have to load the WASM code into JavaScript and call it from there. Our goal is to be able to call our <code>add()</code> function with two arguments and read the output number.</p>
+<p>The easiest way to do this, that I know if, is using <a href="https://www.npmjs.com/package/inline-webassembly">inline-webassembly</a> NPM package. And you would end up with a JS file like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iw</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;inline-webassembly&#39;</span>);
+
+<span style="color:#a6e22e">iw</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">  (module
+</span><span style="color:#e6db74">    (func (export &#34;add&#34;) (param </span><span style="color:#e6db74">$</span><span style="color:#e6db74">n1 i32) (param </span><span style="color:#e6db74">$</span><span style="color:#e6db74">n2 i32) (result i32)
+</span><span style="color:#e6db74">      get_local </span><span style="color:#e6db74">$</span><span style="color:#e6db74">n1
+</span><span style="color:#e6db74">      get_local </span><span style="color:#e6db74">$</span><span style="color:#e6db74">n2
+</span><span style="color:#e6db74">      i32.add
+</span><span style="color:#e6db74">    )
+</span><span style="color:#e6db74">  )</span><span style="color:#e6db74">`</span>
+).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">wasmModule</span>) =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wasmModule</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">99</span>);
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">Sum = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">sum</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>); <span style="color:#75715e">// 143
+</span><span style="color:#75715e"></span>});
+</code></pre></div><h3 id="conclusion">Conclusion</h3>
+<p>Now that you know how you can easily create and use WebAssembly code, there is nothing stopping you from refactoring performance critical parts of your code using WASM.</p>
+<p>Happy assembling!</p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/webassembly'>webassembly</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/hello%20world'>hello world</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>
