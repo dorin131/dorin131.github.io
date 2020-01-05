@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Mon, 30 Dec 2019 23:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 19:15:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Structures in Go: Heap</title>
+      <link>https://fodor.org/blog/go-heap/</link>
+      <pubDate>Sun, 05 Jan 2020 19:15:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-heap/</guid>
+      <description>Introduction In this article I want us to look at my implementation of a Heap data structure in Go. I assume that you are already familiar with the theory behind what a Heap is and its properties but if you&#39;re not then I will try to briefly explain this to you below and also tell you about some resources where you can learn more.
+What is a Heap If I had to explain it in my own words, I would say that a Heap is a data structure which can be visualised as a nearly-complete binary tree (read my post on Trees) and stores its data in an underlying array.</description>
+    </item>
     
     <item>
       <title>Algorithms in Go: Merge Sort</title>
