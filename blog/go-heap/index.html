@@ -45,7 +45,6 @@
 
 <span style="color:#75715e">// Heap : contains a slice which holds the underlying heap data
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Heap</span> <span style="color:#66d9ef">struct</span> { <span style="color:#75715e">// the total number of elements, which doesn&#39;t go down on extract
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Size</span>  <span style="color:#66d9ef">int</span> <span style="color:#75715e">// the total number of elements, which goes down on extract
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Items</span> []<span style="color:#66d9ef">int</span>
 }
 
@@ -98,17 +97,6 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Heap</span>) <span style="color:#a6e22e">Swap</span>(<span style="color:#a6e22e">indexOne</span>, <span style="color:#a6e22e">indexTwo</span> <span style="color:#66d9ef">int</span>) {
 	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">indexOne</span>], <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">indexTwo</span>] = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">indexTwo</span>], <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">indexOne</span>]
 }
-
-<span style="color:#75715e">// GetAllItems : returns all elements, including those discarded by extractions
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Heap</span>) <span style="color:#a6e22e">GetAllItems</span>() []<span style="color:#66d9ef">int</span> {
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>
-}
-
-<span style="color:#75715e">// TrimItems : remove all elements outside the Heap
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Heap</span>) <span style="color:#a6e22e">TrimItems</span>() {
-	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span> = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[:<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-}
-
 </code></pre></div><p>Next we have the actual Max Heap package which is going to use the structure we created earlier.</p>
 <p>It has two exported methods: <code>Insert</code> and <code>ExtractMax</code>, which let us add and retrieve values off the Heap.</p>
 <p>But the most interesting methods are probably <code>maxHeapifyUp</code> and <code>maxHeapifyDown</code>. The first one starts at an index and pushes the value up the heap until it reaches a position where it is smaller than the parent and the children are are smaller than it is. And the second will also start at an index and push the value down until it gets into a position that satisfies the Max Heap data structure.</p>
@@ -133,12 +121,11 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">input</span> []<span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">MaxHeap</span> {
 	<span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">MaxHeap</span>{
 		<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">heap</span>.<span style="color:#a6e22e">Heap</span>{
-			<span style="color:#a6e22e">Size</span>:  len(<span style="color:#a6e22e">input</span>),
 			<span style="color:#a6e22e">Items</span>: <span style="color:#a6e22e">input</span>,
 		},
 	}
 
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span> &gt; <span style="color:#ae81ff">0</span> {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>) &gt; <span style="color:#ae81ff">0</span> {
 		<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">buildMaxHeap</span>()
 	}
 
@@ -146,7 +133,7 @@
 }
 
 <span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">MaxHeap</span>) <span style="color:#a6e22e">buildMaxHeap</span>() {
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
 		<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">maxHeapifyDown</span>(<span style="color:#a6e22e">i</span>)
 	}
 }
@@ -154,8 +141,7 @@
 <span style="color:#75715e">// Insert : adds an element to the heap
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">MaxHeap</span>) <span style="color:#a6e22e">Insert</span>(<span style="color:#a6e22e">item</span> <span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">MaxHeap</span> {
 	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span> = append(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>, <span style="color:#a6e22e">item</span>)
-	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span><span style="color:#f92672">++</span>
-	<span style="color:#a6e22e">lastElementIndex</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#a6e22e">lastElementIndex</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
 	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">maxHeapifyUp</span>(<span style="color:#a6e22e">lastElementIndex</span>)
 
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">h</span>
@@ -163,19 +149,17 @@
 
 <span style="color:#75715e">// ExtractMax : returns the maximum element and removes it from the Heap
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">MaxHeap</span>) <span style="color:#a6e22e">ExtractMax</span>() <span style="color:#66d9ef">int</span> {
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
 		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;No items in the heap&#34;</span>)
 	}
 	<span style="color:#a6e22e">minItem</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>]
-	<span style="color:#a6e22e">lastIndex</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#a6e22e">lastIndex</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
 	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">lastIndex</span>]
 
-	<span style="color:#75715e">// storing minimum at the end of the slice
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#a6e22e">lastIndex</span>] = <span style="color:#a6e22e">minItem</span>
+	<span style="color:#75715e">// shrinking slice
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span> = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>[:len(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Items</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
 
 	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">maxHeapifyDown</span>(<span style="color:#ae81ff">0</span>)
-
-	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Size</span><span style="color:#f92672">--</span>
 
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">minItem</span>
 }
