@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on Dorin Fodor</title>
-    <link>https://fodor.org/tags/javascript/</link>
-    <description>Recent content in javascript on Dorin Fodor</description>
+    <title>ecmascript on Dorin Fodor</title>
+    <link>https://fodor.org/tags/ecmascript/</link>
+    <description>Recent content in ecmascript on Dorin Fodor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
     <lastBuildDate>Fri, 17 Jan 2020 15:20:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fodor.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fodor.org/tags/ecmascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,17 +21,6 @@
       <description>🍎🍊🍌 Why am I even asking this question, you might think. Well, the thing is that I have been asked this recently and I feel that I didn&#39;t give a good enough answer.
 Even though undefined, null and void 0 have something in common, they cannot be compared directly because they represent different concepts with different functionalities.
 Instead of doing a one to one comparison between those, I think it makes more sense to explain what each of them is and by doing this, it will be clear how different they are.</description>
-    </item>
-    
-    <item>
-      <title>How To Publish an NPM Package</title>
-      <link>https://fodor.org/blog/how-to-publish-npm-package/</link>
-      <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
-      
-      <guid>https://fodor.org/blog/how-to-publish-npm-package/</guid>
-      <description>Introduction In essence, publishing an npm package is just one command, but there are some things that you have to take care of before doing that.
-Step-by-Step Here are the steps I followed before publishing my first package:
- Create a free account on https://www.npmjs.com/. Log into the npm CLI by running npm login. Create a folder for your new package which would normally have the same name. Make sure that you ran npm init and have all the right values filled-in in the package.</description>
     </item>
     
   </channel>
