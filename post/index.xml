@@ -7,20 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Fri, 17 Jan 2020 15:20:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2020 21:55:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>JS: The difference between &#34;undefined&#34;, &#34;null&#34; and &#34;void 0&#34;</title>
-      <link>https://fodor.org/blog/js-undefined-null-void/</link>
-      <pubDate>Fri, 17 Jan 2020 15:20:00 +0000</pubDate>
+      <title>Subscribe to events and debounce with RxJS</title>
+      <link>https://fodor.org/blog/js-react-event-rxjs-debounce/</link>
+      <pubDate>Fri, 27 Mar 2020 21:55:00 +0000</pubDate>
       
-      <guid>https://fodor.org/blog/js-undefined-null-void/</guid>
-      <description>🍎🍊🍌 Why am I even asking this question, you might think. Well, the thing is that I have been asked this recently and I feel that I didn&#39;t give a good enough answer.
-Even though undefined, null and void 0 have something in common, they cannot be compared directly because they represent different concepts with different functionalities.
-Instead of doing a one to one comparison between those, I think it makes more sense to explain what each of them is and by doing this, it will be clear how different they are.</description>
+      <guid>https://fodor.org/blog/js-react-event-rxjs-debounce/</guid>
+      <description>Today I would like to show you an easy way to subscribe to a window event in React and how you can debounce it, so that your callback is not called too often.
+One scenario when this could prove useful, is if you want to make some kind of update on your page whenever the size of the window has changed.
+So how do we know when the window has been resized?</description>
     </item>
     
     <item>

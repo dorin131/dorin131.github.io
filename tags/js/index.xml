@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on Dorin Fodor</title>
+    <link>https://fodor.org/tags/js/</link>
+    <description>Recent content in js on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Fri, 27 Mar 2020 21:55:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Subscribe to events and debounce with RxJS</title>
+      <link>https://fodor.org/blog/js-react-event-rxjs-debounce/</link>
+      <pubDate>Fri, 27 Mar 2020 21:55:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/js-react-event-rxjs-debounce/</guid>
+      <description>Today I would like to show you an easy way to subscribe to a window event in React and how you can debounce it, so that your callback is not called too often.
+One scenario when this could prove useful, is if you want to make some kind of update on your page whenever the size of the window has changed.
+So how do we know when the window has been resized?</description>
+    </item>
+    
+  </channel>
+</rss>
