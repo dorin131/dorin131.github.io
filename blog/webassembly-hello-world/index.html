@@ -39,7 +39,7 @@ This is our addition function in WASM (text format):</p>
 </code></pre></div><p>Let’s break this down quickly and see what’s happening there line by line:</p>
 <ol>
 <li>We declare a new module. All of your WebAssembly code has to be contained in a module.</li>
-<li>Declaring a function which we export with the name <code>add</code>. This will allow us to call it from JS with <code>add()</code>. Then we say that it has two parameters of type 32bit Integer named <code>$n1</code> and <code>$n2</code>. Lastly we say that our punction is going to return another 32bit Integer.</li>
+<li>Declaring a function which we export with the name <code>add</code>. This will allow us to call it from JS with <code>add()</code>. Then we say that it has two parameters of type 32bit Integer named <code>$n1</code> and <code>$n2</code>. Lastly we say that our function is going to return another 32bit Integer.</li>
 <li>Put on stack <code>$n1</code> from local memory.</li>
 <li>Put on stack <code>$n2</code> from local memory.</li>
 <li>The built-in <code>i32.add</code> function will take the last two values from the stack, add them and return the sum.</li>
