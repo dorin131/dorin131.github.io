@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2019–2020</copyright>
-    <lastBuildDate>Fri, 27 Mar 2020 21:55:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2020 13:01:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fodor.org/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>React: Subscribe to events and debounce with RxJS</title>
       <link>https://fodor.org/blog/js-react-event-rxjs-debounce/</link>
-      <pubDate>Fri, 27 Mar 2020 21:55:00 +0000</pubDate>
+      <pubDate>Fri, 27 Mar 2020 13:01:00 +0000</pubDate>
       
       <guid>https://fodor.org/blog/js-react-event-rxjs-debounce/</guid>
       <description>Today I would like to show you an easy way to subscribe to a window event in React and how you can debounce it, so that your callback is not called too often.

@@ -22,18 +22,18 @@
 	  <small class="text-secondary mb-5">Posted on March 27, 2020 | 2 minute read</small>
 	  <p><p>Today I would like to show you an easy way to subscribe to a window event in React and how you can debounce it, so that your callback is not called too often.</p>
 <p>One scenario when this could prove useful, is if you want to make some kind of update on your page whenever the size of the window has changed.</p>
-<p>So how do we know when the window has been resized? We can use the browser built-in method <code>addEventListener</code>, like so:</p>
+<p>So how do we know when the window has been resized? We can use the browser built-in method addEventListener, like so:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;resize&#39;</span>, <span style="color:#a6e22e">handleResize</span>);
 </code></pre></div><p>And we unsubscribe with:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">window.<span style="color:#a6e22e">removeEventListener</span>(<span style="color:#e6db74">&#39;resize&#39;</span>, <span style="color:#a6e22e">handleResize</span>);
-</code></pre></div><p>Only we are not going to do any of that. Instead we'll be using RxJS and its <code>fromEvent</code> method:</p>
+</code></pre></div><p>Only we are not going to do any of that. Instead we'll be using RxJS and its fromEvent method:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">listener</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fromEvent</span>(window, <span style="color:#e6db74">&#39;resize&#39;</span>);
 
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">subscription</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">listener</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">handleResize</span>);
 
 <span style="color:#75715e">// and unsubscribing with
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">subscription</span>.<span style="color:#a6e22e">unsubscribe</span>();
-</code></pre></div><p>Now let's add this to our React component function and use the <code>useEffect</code> hook to make a custom hook that is going to handle the subscription and unsubscription. We'll call this custom hook <code>useWindowResize</code>.</p>
+</code></pre></div><p>Now let's add this to our React component function and use the useEffect hook to make a custom hook that is going to handle the subscription and unsubscription. We'll call this custom hook useWindowResize.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">fromEvent</span>, <span style="color:#a6e22e">timer</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs&#39;</span>;
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">debounce</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs/operators&#39;</span>;
 
@@ -50,13 +50,12 @@
     <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">subscription</span>.<span style="color:#a6e22e">unsubscribe</span>();
   })
 }
-</code></pre></div><p>Now every time the window is being resizes, we are going to be calling the <code>handleResize</code> method. But, it will never be called more often than once per second (1000ms).</p>
+</code></pre></div><p>Now every time the window is being resizes, we are going to be calling the handleResize method. But, it will never be called more often than once per second (1000ms).</p>
 <p>Have a nice day!</p>
 </p>
 	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/js'>js</a></span>
-	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/javascript'>javascript</a></span>
-	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/rxjs'>rxjs</a></span>
 	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/react'>react</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/rxjs'>rxjs</a></span>
 	  
 	  </code>
 	  <div class="container mt-2" id="comments">
