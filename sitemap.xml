@@ -3,17 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://fodor.org/</loc>
-    <lastmod>2020-03-27T13:01:00+00:00</lastmod>
+    <loc>https://fodor.org/tags/c&#43;&#43;/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://fodor.org/tags/js/</loc>
-    <lastmod>2020-03-27T13:01:00+00:00</lastmod>
+    <loc>https://fodor.org/blog/cpp-libraries-curlpp/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/curlpp/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/dorinbrowser/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://fodor.org/post/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/qt/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/</loc>
+    <lastmod>2020-06-27T12:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fodor.org/tags/js/</loc>
     <lastmod>2020-03-27T13:01:00+00:00</lastmod>
   </url>
   
@@ -29,11 +59,6 @@
   
   <url>
     <loc>https://fodor.org/tags/rxjs/</loc>
-    <lastmod>2020-03-27T13:01:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fodor.org/tags/</loc>
     <lastmod>2020-03-27T13:01:00+00:00</lastmod>
   </url>
   
