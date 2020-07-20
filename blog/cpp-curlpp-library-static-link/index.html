@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>C&#43;&#43;: Dorin Browser and the first web request</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>C&#43;&#43;: Dorin Browser and the first web request</h2>
+	  <small class="text-secondary mb-5">Posted on June 27, 2020 | 3 minute read</small>
+	  <p><h3 id="my-first-web-request">My first web request</h3>
+<p>While in the very early stages of building <a href="https://github.com/dorin131/DorinBrowser">Dorin Browser</a>, I got to the point when I had to implement a web request functionality that would let it fetch resources from the internet.</p>
+<p>Being a total newbie when it comes to C++, I had no idea how to do this. I was still half way through my &ldquo;The C++ Programming Language&rdquo; book by Bjarne Stroustrup, and there was no mention yet on how to do this.</p>
+<p>Being eager to get this pretty important feature added to the browser, I dockduckgo'd &ldquo;how to make a web request in cpp&rdquo; and the first <a href="https://stackoverflow.com/questions/1011339/how-do-you-make-a-http-request-with-c">StackOverflow result</a> that popped up, had as answer the <strong>curlpp</strong> library.</p>
+<p>This sounded good to me. It's a wrapper around the trusted <strong>libcurl</strong> library and the API seemed quite friendly.</p>
+<h3 id="3rd-party-libraries-in-c">3rd party libraries in C++</h3>
+<p>I felt like I was on the right path, now that I knew what library I'm going to use, but I had no idea how to actually get it into my project.</p>
+<p>Most of the languages that I used to work with before, like JS, Java, Go, had some kind of a de facto package manager that would let you, relatively easy, add 3rd party packages to your project.</p>
+<p>It seemed that even though there are some kind of package managers for C++, many developers prefer not to use one, and I was quite happy not to use one either. Having all my dependencies next to my source code, without needing to download stuff off the internet, was a very appealing idea and I still love it.</p>
+<p>So, I had to figure this one out. My very brief research showed that there are two main ways of including libraries into a C++ project. That is, statiacally linking them or dynamically linking.</p>
+<p><strong>Static linking</strong> will take the source code of your library and build it into your program at compile time.</p>
+<p><strong>Dynamic linking</strong> will compile the library in a separate file which your program is going to use it.</p>
+<p>So I decided to go ahead with having <strong>curlpp</strong> as a statically linked library.</p>
+<h3 id="my-dev-environment">My dev environment</h3>
+<p>I'm running on Linux Mint 19.1 and my IDE is QT Creator 4.12.3 based on Qt 5.14.2</p>
+<p>If you're on a different platform or using a different IDE, you'll probably have to do things slightly different.</p>
+<h4 id="dependencies">Dependencies</h4>
+<p>The first thing you want to do, is make sure you have <strong>libcurl</strong> installed on your machine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install libcurl4 libcurl4-openssl-dev -y
+</code></pre></div><p>This is required because <strong>curlpp</strong> is basically a wrapper around <strong>libcurl</strong>.</p>
+<h4 id="getting-the-source-code">Getting the source code</h4>
+<p>Next, we have to download the actual source code from <a href="https://github.com/jpbarrette/curlpp/releases/tag/v0.8.1">https://github.com/jpbarrette/curlpp/releases/tag/v0.8.1</a> (pick the latest version) and copy it into your project folder. Depending on how you have structured your project, you might want to have it inside a /libs folder.</p>
+<p>Now you should have the curlpp source code within <strong>/your-project/libs/curlpp-x.x.x</strong></p>
+<h4 id="compiling-the-library">Compiling the library</h4>
+<p>Inside the curlpp folder that you have just copied (curlpp-x.x.x), we are going to create a build folder, where the library is going to be built.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir build
+cd build
+cmake ..
+make
+</code></pre></div><h4 id="adding-the-library-to-the-project">Adding the library to the project</h4>
+<p>Right click on your project and click on <strong>Add Library&hellip;</strong></p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/c&#43;&#43;'>c&#43;&#43;</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/curlpp'>curlpp</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/dorinbrowser'>dorinbrowser</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>
