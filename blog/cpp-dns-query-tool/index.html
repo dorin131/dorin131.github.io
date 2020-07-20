@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>C&#43;&#43;: Building a DNS query tool - What I learned</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>C&#43;&#43;: Building a DNS query tool - What I learned</h2>
+	  <small class="text-secondary mb-5">Posted on July 19, 2020 | 4 minute read</small>
+	  <p><h3 id="preface">Preface</h3>
+<p>So I made this CLI tool which lets you query for a domain name and it returns one or more IPs.
+It&rsquo;s pretty much just an interface for your DNS server (8.8.8.8, 1.1.1.1, etc.).</p>
+<p>Check it out here: <a href="https://github.com/dorin131/dns-query">https://github.com/dorin131/dns-query</a></p>
+<p>It only has your standard libraries which are probably included with your OS (Linux), so compiling it should not be a challenge.</p>
+<p>You would tell it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./dns fodor.org
+</code></pre></div><p>And you should get back something like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DNS Server: 1.1.1.1
+
+- Query
+Name: fodor.org
+Answers RRs: <span style="color:#ae81ff">4</span>
+Authority RRs: <span style="color:#ae81ff">0</span>
+Additional RRs: <span style="color:#ae81ff">0</span>
+
+- Answer<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
+Type: <span style="color:#ae81ff">1</span>
+Class: <span style="color:#ae81ff">1</span>
+TTL: <span style="color:#ae81ff">300</span>
+Data length: <span style="color:#ae81ff">4</span>
+Address: 185.199.110.153
+
+- Answer<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>
+Type: <span style="color:#ae81ff">1</span>
+Class: <span style="color:#ae81ff">1</span>
+TTL: <span style="color:#ae81ff">300</span>
+Data length: <span style="color:#ae81ff">4</span>
+Address: 185.199.109.153
+
+- Answer<span style="color:#f92672">(</span>3<span style="color:#f92672">)</span>
+Type: <span style="color:#ae81ff">1</span>
+Class: <span style="color:#ae81ff">1</span>
+TTL: <span style="color:#ae81ff">300</span>
+Data length: <span style="color:#ae81ff">4</span>
+Address: 185.199.108.153
+
+- Answer<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>
+Type: <span style="color:#ae81ff">1</span>
+Class: <span style="color:#ae81ff">1</span>
+TTL: <span style="color:#ae81ff">300</span>
+Data length: <span style="color:#ae81ff">4</span>
+Address: 185.199.111.153
+</code></pre></div><p>It is nothing complicated, but me being a newbie at C++ and networking, I learned a few interesting things along the way.</p>
+<h3 id="learnings">Learnings</h3>
+<h4 id="1-wireshark-is-your-friend">1. Wireshark is your friend</h4>
+<p>How do you even start making a DNS tool, right? Well, you first have to see what what kind of communication happens between your computer and a DNS server and then try to &ldquo;reverse engineer&rdquo; that.
+Well, you don&rsquo;t really need to reverse engineer anything because the domain system and protocol are standardised and available publicly (<a href="https://tools.ietf.org/html/rfc1035)">https://tools.ietf.org/html/rfc1035)</a>.</p>
+<p>Wireshark will let you inspect all your network traffic and you can clearly see what kind of data is exchanged between you and the DNS server.</p>
+<p><img src="/img/cpp-dns-query-tool/dns-wireshark.png" alt="Wireshark"></p>
+<h4 id="2-you-talk-to-dns-servers-through-udp-at-port-53">2. You talk to DNS servers through UDP at port 53</h4>
+<p>The extremely quick requests to the DNS servers are done over the User Datagram Protocol. The structure of datagram is very simple: a lightweight header, which has the source and destination ports, length and checksum; and a data section which holds the contents that we want to communicate.</p>
+<h4 id="3-udp-requests-are-easy-in-cc">3. UDP requests are easy in C/C++</h4>
+<p>All you need to know are three functions: <code>socket</code>, <code>sendto</code> and <code>rcvfrom</code>. That&rsquo;s it.</p>
+<p>You will first create a socket connection and then send/receive the data.</p>
+<h4 id="4-getting-the-data-structure-right-is-the-hardest-part">4. Getting the data structure right is the hardest part</h4>
+<p>The DNS server is expecting to receive the request in a specific format and will reply back with more data which you have to make sense of.</p>
+<p>Fortunately the message format is documented in RFC1035 which describes the details of the domain system and protocol.</p>
+<p>As a developer, you will have to translate the specs in the document to a &ldquo;struct&rdquo;, which your program will use to handle your outgoing and incoming data. Otherwise you only have an array of bytes that don&rsquo;t make much sense.</p>
+<h4 id="5-youll-be-casting-a-lot">5. You&rsquo;ll be casting a lot</h4>
+<p>This point is connected to the one above. You will get unstructured data from the server and will have to cast it to the types that you have created based on the available documentation.</p>
+<p>Working with a programming language like C++, you have lots of power and flexibility when it comes to handling your data. If you tell it that at address 0xdeadbeef there is an IP address, it will take your word for it. Hence you have to proceed carefully and make sure that &ldquo;structs&rdquo; you have created and the types you have casted are 100% correct. Mistakes will not be tolerated.</p>
+<p>The are at least 5 ways to cast in C++. Here is a brief description of these: <a href="https://www.tutorialspoint.com/Regular-cast-vs-static-cast-vs-dynamic-cast-in-Cplusplus">https://www.tutorialspoint.com/Regular-cast-vs-static-cast-vs-dynamic-cast-in-Cplusplus</a></p>
+<h4 id="6-endianness-will-catch-you-off-guard-at-least-it-did-me">6. Endianness will catch you off-guard (at least it did me)</h4>
+<p>So we&rsquo;ve got bytes, which are typically 8 bits long. Then we can compose multiple bytes to represent larger types, like 16 bit, 32 bit or 64 bit integers. Now, to string together these bytes to get a multibyte integer can be done in two directions, and different CPUs actually do it differently ¯_(ツ)_/¯.</p>
+<p>What we have is &ldquo;big-endian&rdquo; and &ldquo;little-endian&rdquo; machines. The &ldquo;Network Byte Order&rdquo; though is big-endian, so whatever machine you are using, when transmitting or receiving your data over internet you have to transform it to/from network byte order. This is to prevent conflicts of order between different types of machines.</p>
+<p>A nicer explanation can be found here: <a href="https://www.gta.ufrj.br/ensino/eel878/sockets/htonsman.html">https://www.gta.ufrj.br/ensino/eel878/sockets/htonsman.html</a></p>
+<h3 id="wrap-up">Wrap up</h3>
+<p>I encourage you to fork, modify or improve the DNS tool I wrote <a href="https://github.com/dorin131/dns-query">https://github.com/dorin131/dns-query</a>.</p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/c&#43;&#43;'>c&#43;&#43;</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/dns'>dns</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/network'>network</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/udp'>udp</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>

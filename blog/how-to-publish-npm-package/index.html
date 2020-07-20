@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>How To Publish an NPM Package</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>How To Publish an NPM Package</h2>
+	  <small class="text-secondary mb-5">Posted on December 8, 2019 | 3 minute read</small>
+	  <p><h3 id="introduction">Introduction</h3>
+<p>In essence, publishing an npm package is just one command, but there are some things that you have to take care of before doing that.</p>
+<h3 id="step-by-step">Step-by-Step</h3>
+<p>Here are the steps I followed before publishing my first package:</p>
+<ol>
+<li>Create a free account on <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>.</li>
+<li>Log into the npm CLI by running <code>npm login</code>.</li>
+<li>Create a folder for your new package which would normally have the same name.</li>
+<li>Make sure that you ran <code>npm init</code> and have all the right values filled-in in the <code>package.json</code> file.</li>
+<li>Carefully choose the name, as that is going to be the name that everyone is going to use to install your package.</li>
+<li>Set the version number using the semantic versioning format.
+It should look something like this: “v1.2.3”. The first number is the major version and should be incremented every time you deploy a breaking change.
+The second number is the minor version and should go up with every new non-breaking feature. And, lastly, we have the patch/fix number.
+Also, at the same time, create a new release in GitHub (or your other VCS) with a matching version. <a href="https://docs.npmjs.com/about-semantic-versioning">(Read more)</a></li>
+<li>Add a <code>types</code> field which will point to your types definition file.
+You don’t have to do this step but with the rapid increase of TypeScript and better IDEs, you are doing the developer a big favor. The types file will be a *.ts file written in TypeScript and describing the types, interfaces, etc. of your package. <a href="https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#including-declarations-in-your-npm-package">(Read more)</a></li>
+<li>Specify the place where your code is hosted by filling in the repository field.
+<a href="https://docs.npmjs.com/files/package.json#repository">(Read more)</a></li>
+<li>Have a think about how you want to license your package and set the correct license value. If you are not sure, go to this website <a href="https://choosealicense.com/">https://choosealicense.com/</a> which will make this very easy for you.</li>
+<li>Check your <code>.gitignore</code> file and verify that you are not including any personal or unnecessary files in your repository.</li>
+<li>Add an <code>.npmignore</code> file which will exclude specific files from your npm package. I personally have added the test files in here, as we don’t need to have them in the package.</li>
+<li>Take your time to write a nice <code>README.md</code> file, where you explain to your future users how to install the package, how to use it, and maybe give some examples. The contents of this file will also appear on <a href="https://www.npmjs.com/">this website</a>.</li>
+<li>Now you’re almost ready to publish, but before you do so, run <code>npm pack</code>, which will generate a <code>*.tgz</code> file containing all the files exactly how they will end up in your npm package.
+This will let you double-check that everything has been set up correctly and you are going to publish the right thing.</li>
+<li>Just before publishing, you are going to run a quick test locally. Create a new folder, initialize npm (<code>npm init</code>) and install your package with <code>npm install -S ./path/to/your/package</code>.
+This will install the package from your local directory and you can try to use it as if it was already published.</li>
+<li>Assuming that you have done all the steps above and it all worked as expected, you can now publish your package with <code>npm publish</code>.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>Congratulations, you now have a brand new npm package.</p>
+<p>You can see your package on npm like so: <a href="https://www.npmjs.com/package/inline-webassembly">https://www.npmjs.com/package/inline-webassembly</a></p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/javascript'>javascript</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/npm'>npm</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>

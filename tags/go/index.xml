@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Dorin Fodor</title>
+    <link>https://fodor.org/tags/go/</link>
+    <description>Recent content in go on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Sun, 12 Jan 2020 22:30:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithms in Go: Heap Sort</title>
+      <link>https://fodor.org/blog/go-heap-sort/</link>
+      <pubDate>Sun, 12 Jan 2020 22:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-heap-sort/</guid>
+      <description>Introduction Heap Sort is a sorting algorithms which uses the Heap data structure to arrange a set of elements in an ascending or descending order.
+In a previous post I have shown how to build a Max Heap. I suggest that you check it out first before continuing with the sorting algorithm.
+https://fodor.org/blog/go-heap/
+As you know now, there are two main types of heaps: Max Heap and Min Heap. Once we have implemented those, it is a trivial matter to do the sorting.</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Heap</title>
+      <link>https://fodor.org/blog/go-heap/</link>
+      <pubDate>Sun, 05 Jan 2020 19:15:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-heap/</guid>
+      <description>Introduction In this article I want us to look at my implementation of a Heap data structure in Go. I assume that you are already familiar with the theory behind what a Heap is and its properties but if you&amp;rsquo;re not then I will try to briefly explain this to you below and also tell you about some resources where you can learn more.
+What is a Heap If I had to explain it in my own words, I would say that a Heap is a data structure which can be visualised as a nearly-complete binary tree (read my post on Trees) and stores its data in an underlying array.</description>
+    </item>
+    
+    <item>
+      <title>Algorithms in Go: Merge Sort</title>
+      <link>https://fodor.org/blog/go-merge-sort/</link>
+      <pubDate>Mon, 30 Dec 2019 23:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-merge-sort/</guid>
+      <description>Introduction Following the insertion sort algorithm which we have implemented in the previous post, it was only natural to follow with the implementation of merge sort.
+Compared with the insertion sort which has a time complexity of O(n2), the merge sort is more efficient, with a time complexity of O(n*log(n)). This means that it will be able to handle an increasing number of elements faster. See the graph below for a visual comparison.</description>
+    </item>
+    
+    <item>
+      <title>Algorithms in Go: Insertion Sort</title>
+      <link>https://fodor.org/blog/go-insertion-sort/</link>
+      <pubDate>Sun, 29 Dec 2019 18:28:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-insertion-sort/</guid>
+      <description>Introduction One of the most basic sorting algorithms is the insertion sort. It is also relatively easy to understand as it closely mimics a common sorting strategy that humans normally use when sorting playing cards in their hand. Even though its time complexity is O(n2) for the worst case, it still performs well for small input sizes. Below is an illustration of the steps taken to perform a merge sort:</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Hash Table</title>
+      <link>https://fodor.org/blog/go-hash-table/</link>
+      <pubDate>Sat, 28 Dec 2019 16:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-hash-table/</guid>
+      <description>Introduction The time has come to implement one of the most commonly used data structures in software development - the Hash Table!
+A hash table is a data structure that implements an associative array, allowing us to store pairs of keys and values that can be accessed at an expected O(1) time (O(n) - worst case for a bad implementation).
+Personally I love this data structure. It works a bit like magic!</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Graph</title>
+      <link>https://fodor.org/blog/go-graph/</link>
+      <pubDate>Thu, 26 Dec 2019 22:25:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-graph/</guid>
+      <description>Introduction Unlike the queue, the stack and the linked list, the graph is a non-linear data structure, similar to the tree. It is composed of a collection of nodes which are connected to each other. The connections are called edges and can be either directed or non-directed. The edges can also have weights associated to them. These could represent distances, times or any other kind of information which describes that connection.</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Tree</title>
+      <link>https://fodor.org/blog/go-binary-search-tree/</link>
+      <pubDate>Wed, 25 Dec 2019 19:48:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-binary-search-tree/</guid>
+      <description>Introduction A Tree is a non-linear data structure which consists of one or more nodes where a node can have zero or more references to other nodes which will form a sub-tree.
+There are multiple types of trees: ordered, un-ordered, balanced, non-balanced, with two children, with more than two children, etc.
+For the purpose of this article I have chosen to implement a non-balanced Binary Search Tree, which is an ordered tree with two child nodes.</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Queue and Stack</title>
+      <link>https://fodor.org/blog/go-queue-and-stack/</link>
+      <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-queue-and-stack/</guid>
+      <description>Introduction Two of the most basic data structures are the Queue and the Stack. These can be implemented in many different ways and their underlying data structures could also be of various types. Usually they are based on either linked lists or arrays.
+In our case I have chosen to base these data structures on slices, as this is a native type in Go and is very easy to manipulate (grow, slice, etc.</description>
+    </item>
+    
+    <item>
+      <title>Compile Go to WebAssembly (the browser version)</title>
+      <link>https://fodor.org/blog/go-to-webassembly/</link>
+      <pubDate>Mon, 23 Dec 2019 17:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-to-webassembly/</guid>
+      <description>Introduction I don&amp;rsquo;t think many people realised yet the great possibilities we were given with the advent of WebAssembly.
+We are now essentially able to compile almost any (see list) language to WebAssembly. Which means that the range of applications that we can run in a browser, on the client side, has grown exponentially!
+For example, I would like to show you below how you can take your Go code, compile it to WebAssembly and run it natively in the browser.</description>
+    </item>
+    
+    <item>
+      <title>Data Structures in Go: Linked List</title>
+      <link>https://fodor.org/blog/go-linked-list/</link>
+      <pubDate>Sun, 22 Dec 2019 22:50:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-linked-list/</guid>
+      <description>Definition  A linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. (https://en.wikipedia.org/wiki/Linked_list)
+ A little intro This is a first post from a series on Data Structure implementations in Go. I&amp;rsquo;m starting with what I consider one of the simplest data structures (I might be proven wrong later) and will continue with some of the other popular ones.</description>
+    </item>
+    
+    <item>
+      <title>Avoiding race conditions in Go</title>
+      <link>https://fodor.org/blog/go-avoiding-race-conditions/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-avoiding-race-conditions/</guid>
+      <description>Intro Being able to use goroutines correctly is one of the most important skill for a go developer. They give you great power which is easy to invoke but not everyone can grasp the consequences of mishandling it.
+Concurrency-safety A function is said to be concurrency-safe if it can run correctly when called concurrently, meaning from multiple goroutines.
+Race conditions A race condition could occur when two or more goroutines access a resource (variable) concurrently and at least one of them executes a write operation to it.</description>
+    </item>
+    
+    <item>
+      <title>Go: counting semaphores</title>
+      <link>https://fodor.org/blog/go-counting-semaphores/</link>
+      <pubDate>Fri, 20 Dec 2019 21:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-counting-semaphores/</guid>
+      <description>Goroutines One of the main features of the Go programming languages is the goroutine. Executing a function as a goroutine lets us run things in parallel which can greatly improve the performance of our application. But you can take parallelism only so far before it actually starts making things slower.
+Unlimited parallelism Your code might be calling a function called doInParallel() as a goroutine in this fashion:
+func main() { wg := sync.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tree on Dorin Fodor</title>
+    <link>https://fodor.org/tags/tree/</link>
+    <description>Recent content in tree on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Wed, 25 Dec 2019 19:48:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Structures in Go: Tree</title>
+      <link>https://fodor.org/blog/go-binary-search-tree/</link>
+      <pubDate>Wed, 25 Dec 2019 19:48:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-binary-search-tree/</guid>
+      <description>Introduction A Tree is a non-linear data structure which consists of one or more nodes where a node can have zero or more references to other nodes which will form a sub-tree.
+There are multiple types of trees: ordered, un-ordered, balanced, non-balanced, with two children, with more than two children, etc.
+For the purpose of this article I have chosen to implement a non-balanced Binary Search Tree, which is an ordered tree with two child nodes.</description>
+    </item>
+    
+  </channel>
+</rss>

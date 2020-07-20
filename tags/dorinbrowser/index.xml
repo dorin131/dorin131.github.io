@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dorinbrowser on Dorin Fodor</title>
+    <link>https://fodor.org/tags/dorinbrowser/</link>
+    <description>Recent content in dorinbrowser on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Sat, 27 Jun 2020 12:20:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/dorinbrowser/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C&#43;&#43;: Using 3rd party libraries in QT Creator</title>
+      <link>https://fodor.org/blog/cpp-libraries-curlpp/</link>
+      <pubDate>Sat, 27 Jun 2020 12:20:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/cpp-libraries-curlpp/</guid>
+      <description>My first web request While in the very early stages of building Dorin Browser, I got to the point when I had to implement a web request functionality that would let it fetch resources from the internet.
+Being a total newbie when it comes to C++, I had no idea how to do this. I was still half way through my &amp;ldquo;The C++ Programming Language&amp;rdquo; book by Bjarne Stroustrup, and there was no mention yet on how to do this.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>concurrency on Dorin Fodor</title>
+    <link>https://fodor.org/tags/concurrency/</link>
+    <description>Recent content in concurrency on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Sat, 21 Dec 2019 19:30:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Avoiding race conditions in Go</title>
+      <link>https://fodor.org/blog/go-avoiding-race-conditions/</link>
+      <pubDate>Sat, 21 Dec 2019 19:30:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-avoiding-race-conditions/</guid>
+      <description>Intro Being able to use goroutines correctly is one of the most important skill for a go developer. They give you great power which is easy to invoke but not everyone can grasp the consequences of mishandling it.
+Concurrency-safety A function is said to be concurrency-safe if it can run correctly when called concurrently, meaning from multiple goroutines.
+Race conditions A race condition could occur when two or more goroutines access a resource (variable) concurrently and at least one of them executes a write operation to it.</description>
+    </item>
+    
+  </channel>
+</rss>

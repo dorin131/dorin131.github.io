@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>Supercharge your TypeScript with AssemblyScript</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>Supercharge your TypeScript with AssemblyScript</h2>
+	  <small class="text-secondary mb-5">Posted on December 1, 2019 | 4 minute read</small>
+	  <p><h3 id="introduction">Introduction</h3>
+<p>So you’re using TypeScript at work or your personal project? That’s fantastic! Take advantage of those types and produce better, more readable and bug-free JavaScript!
+And now you’re looking to take things to the next level and get super-fast execution times? You’re in the right place then.</p>
+<h3 id="webassembly">WebAssembly</h3>
+<p>You’ve probably heard of WebAssembly already. If not, here is a brief description of what WebAssembly is:</p>
+<blockquote>
+<p>WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable target for compilation of high-level languages like C/C++/Rust, enabling deployment on the web for client and server applications. (<a href="https://webassembly.org/">https://webassembly.org/</a>)</p>
+</blockquote>
+<p>Yes, you read that right, you can write code in your favourite mega-efficient low level programming language, compile that to WebAssembly (binary V8 code) and call it from within your JS/TS code!</p>
+<h3 id="assemblyscript">AssemblyScript</h3>
+<p>What if I told you than you don’t need to know/learn a new language to write dazzling-quick TypeScript? With the help of AssemblyScript, you can write TypeScript-like code with real types and better performance, which compiles to WebAssembly.</p>
+<p>So what is AssemblyScript?</p>
+<blockquote>
+<p>AssemblyScript compiles a strict subset of TypeScript (a typed superset of JavaScript) to WebAssembly using Binaryen. (<a href="https://docs.assemblyscript.org/">https://docs.assemblyscript.org/</a>)</p>
+</blockquote>
+<p>It’s as simple as that. You write code in a language which is basically a subset of TypeScript which is going to compile to WebAssembly.</p>
+<h3 id="how-do-i-get-this-to-work">How do I get this to work?</h3>
+<p>I’m glad you asked!</p>
+<p>If you start a project from scratch you can follow the steps below exactly. Otherwise if you’re adding AssemblyScript to an existing project, you might want to skip some steps or do them slightly differently, depending on what you’ve already got.
+You can also clone the the demo repository I have created just for you:</p>
+<blockquote>
+<p><a href="https://github.com/dorin131/assemblyscript-in-typescript">https://github.com/dorin131/assemblyscript-in-typescript</a></p>
+</blockquote>
+<ol>
+<li>
+<p><code>npm init</code></p>
+<p>Initialising NPM.</p>
+</li>
+<li>
+<p><code>npm i -S typescript assemblyscript @types/node</code></p>
+<p>Installing TypeScript, AssemblyScript and Node types.</p>
+</li>
+<li>
+<p><code>npx tsc --init</code></p>
+<p>Initialising TypeScript. This will create a tsconfig.json file in your root directory.</p>
+</li>
+<li>
+<p><code>npx asinit .</code></p>
+<p>Initialising AssemblyScript. This will add a few NPM scripts in your package.json and also add a few other files which will help us to get started with AssemblyScript much quicker.
+In tsconfig.json add the properties below. We are basically just configuring the TypeScript compiler a bit by setting the root and destination paths and telling it to ignore the <code>/node_modules</code> and <code>/assembly</code> folders.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;compilerOptions&#34;</span>: {
+    <span style="color:#f92672">&#34;outDir&#34;</span>: <span style="color:#e6db74">&#34;./dist&#34;</span>,
+    <span style="color:#f92672">&#34;rootDir&#34;</span>: <span style="color:#e6db74">&#34;./&#34;</span>
+  },
+  <span style="color:#f92672">&#34;exclude&#34;</span>: [
+    <span style="color:#e6db74">&#34;node_modules&#34;</span>,
+    <span style="color:#e6db74">&#34;assembly&#34;</span>
+  ]
+}
+</code></pre></div></li>
+<li>
+<p>In <code>package.json</code> add the scripts below. Every time you make a change to your code, you will have to run npm run build and then <code>npm start</code>. Notice how when we start with Node, we pass two flags to it: <code>--experimental-wasm-modules</code> and <code>--experimental-modules</code>. This is required, so that Node can load the *.wasm files. Also make sure you’re using at least version 12 of Node.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#e6db74">&#34;node --experimental-modules --experimental-wasm-modules ./dist/index.js&#34;</span>,
+  <span style="color:#f92672">&#34;build&#34;</span>: <span style="color:#e6db74">&#34;npm run asbuild &amp;&amp; tsc -p ./tsconfig.json &amp;&amp; npm run copy&#34;</span>,
+  <span style="color:#f92672">&#34;copy&#34;</span>: <span style="color:#e6db74">&#34;rm -rf dist/build/ &amp;&amp; cp -r build dist/build/&#34;</span>
+}
+</code></pre></div></li>
+<li>
+<p>Rename <code>index.js</code> to <code>loader.ts</code>, add any missing types and export the WebAssembly instance to be used from other files (<a href="https://github.com/dorin131/assemblyscript-in-typescript/blob/master/loader.ts">https://github.com/dorin131/assemblyscript-in-typescript/blob/master/loader.ts</a>)</p>
+</li>
+</ol>
+<h3 id="demo-benchmark">Demo benchmark</h3>
+<p>By implementing the fibonacci sequence function, which takes number of the fibonacci element and returns its value, in both TypeScript and AssemblyScript, I wanted to run a very simple benchmark.
+This is the TypeScript code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts">
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">0</span>
+       : <span style="color:#66d9ef">n</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">1</span>
+       : <span style="color:#66d9ef">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>);
+}
+</code></pre></div><p>And the AssemblyScript code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span>: <span style="color:#66d9ef">i32</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">i32</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">0</span>
+       : <span style="color:#66d9ef">n</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">1</span>
+       : <span style="color:#66d9ef">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>);
+}
+</code></pre></div><p>Running both of these with an input of <strong>45</strong>, resulted in the same output <strong>1,134,903,170</strong>, but different times!</p>
+<p>The TypeScript version took <strong>9331.856ms</strong></p>
+<p>The AssemblyScript version took <strong>7285.571ms</strong></p>
+<p>A performance improvement of <strong>22%</strong> in this specific case.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>As you can see, getting started with AssemblyScript is very easy and the syntax is almost the same as TypeScript’s (remember, it’s a subset).</p>
+<p>In our very simple fibonacci example we saw a performance increase of <strong>22%</strong>, but I am quite sure that the impact can be much greater in more complex code, where the V8 engine will struggle to optimise the untyped JavaScript.</p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/webassembly'>webassembly</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/typescript'>typescript</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/assemblyscript'>assemblyscript</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>

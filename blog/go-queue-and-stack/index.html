@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="description" content='Dorin Fodor software engineer'>
+	<meta name="keywords" content='dorin, fodor, software, engineer'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href='https://fodor.org/css/bootstrap.min.css'>
+	<title>Data Structures in Go: Queue and Stack</title>
+	<nav class="navbar text-center sticky-top bg-white mt-2 mb-1" style="width: 270px; margin: 0 auto;">
+		<a href='https://fodor.org/'><span class="btn btn-sm btn-outline-secondary">Home</span></a>
+		<a href='https://fodor.org/about'><span class="btn btn-sm btn-outline-secondary">About me</span></a>
+		<a href='https://fodor.org/post'><span class="btn btn-sm btn-outline-secondary">Blog</span></a>
+		<a href='https://fodor.org/tags'><span class="btn btn-sm btn-outline-secondary">Tags</span></a>
+	</nav>
+</head>
+<body>
+      <div id="content">
+
+
+	<section class="container text-monospace text-justified mt-3">
+	  <h2>Data Structures in Go: Queue and Stack</h2>
+	  <small class="text-secondary mb-5">Posted on December 24, 2019 | 3 minute read</small>
+	  <p><h3 id="introduction">Introduction</h3>
+<p>Two of the most basic data structures are the <strong>Queue</strong> and the <strong>Stack</strong>. These can be implemented in many different ways and their underlying data structures could also be of various types. Usually they are based on either linked lists or arrays.</p>
+<p>In our case I have chosen to base these data structures on <em>slices</em>, as this is a native type in Go and is very easy to manipulate (grow, slice, etc.), also very efficient.</p>
+<p>Slices are based on <em>arrays</em> but are more flexible, have a dynamic length and use pointers to retrieve data.</p>
+<h3 id="the-queue">The Queue</h3>
+<p>Below is the entire code for the basic queue implementation. You can see that we have created a <strong>Queue</strong> struct which contains a <code>data</code> field of type <em>slice</em>. This field is going to hold all the queue values.</p>
+<p>We&rsquo;ve also added some methods: <code>IsEmpty</code>, <code>Peek</code>, <code>Queue</code> and <code>Dequeue</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">/*
+</span><span style="color:#75715e">Package queue provides a slice-based Queue data structure
+</span><span style="color:#75715e">*/</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">queue</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#75715e">// Queue : data structure
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Queue</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#75715e">// New : returns a new instance of a Queue
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Queue</span>{
+		<span style="color:#a6e22e">data</span>: []<span style="color:#66d9ef">int</span>{},
+	}
+}
+
+<span style="color:#75715e">// IsEmpty : checks whether the queue is empty
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">IsEmpty</span>() <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+}
+
+<span style="color:#75715e">// Peek : returns the next element in the queue
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">Peek</span>() (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Queue is empty&#34;</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>[<span style="color:#ae81ff">0</span>], <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#75715e">// Queue : adds an element onto the queue and returns an pointer to the current queue
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">Add</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span> {
+	<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span> = append(<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">n</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">q</span>
+}
+
+<span style="color:#75715e">// Dequeue : removes the next element from the queue and returns its value
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">Remove</span>() (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Queue is empty&#34;</span>)
+	}
+	<span style="color:#a6e22e">element</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>[<span style="color:#ae81ff">0</span>]
+	<span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span> = <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">data</span>[<span style="color:#ae81ff">1</span>:]
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">element</span>, <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><h3 id="the-stack">The Stack</h3>
+<p>The stack has an identical underlying structure as the queue - a <em>slice</em>. Although the methods are slightly different: <code>IsEmpty</code>, <code>Peek</code>, <code>Push</code>, <code>Pop</code>.</p>
+<p>Notice how we are using LIFO (last in , first out) principle here.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">/*
+</span><span style="color:#75715e">Package stack provides a slice-based Stack data structure
+</span><span style="color:#75715e">*/</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">stack</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#75715e">// Stack : data structure
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Stack</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#75715e">// New : returns a new instance of a stack
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Stack</span>{
+		<span style="color:#a6e22e">data</span>: []<span style="color:#66d9ef">int</span>{},
+	}
+}
+
+<span style="color:#75715e">// IsEmpty : will return a boolean indicating whether there are any elements on the stack
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>) <span style="color:#a6e22e">IsEmpty</span>() <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+}
+
+<span style="color:#75715e">// Peek : will return the element on the top of the stack
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>) <span style="color:#a6e22e">Peek</span>() (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">IsEmpty</span>() {
+		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Stack is empty&#34;</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#75715e">// Push : Adds an element on the stack
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>) <span style="color:#a6e22e">Push</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span> {
+	<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span> = append(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">n</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+
+<span style="color:#75715e">// Pop : removes an element from the stack and returns its value
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Stack</span>) <span style="color:#a6e22e">Pop</span>() (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Stack is empty&#34;</span>)
+	}
+	<span style="color:#a6e22e">element</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+	<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span> = <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>[:len(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">data</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">element</span>, <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><h3 id="conclusion">Conclusion</h3>
+<p>As you have probably noticed, the Stack and the Queue are quite similar and the main difference is the order in which we retrieve the data: FIFO (queue) and LIFO (stack).</p>
+<h3 id="source-code-with-tests">Source code with tests</h3>
+<p><a href="https://github.com/dorin131/go-data-structures">https://github.com/dorin131/go-data-structures</a></p>
+</p>
+	  <code>tags:<span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/go'>go</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/data%20structure'>data structure</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/queue'>queue</a></span>
+	  <span class='badge badge-dark'><a class='text-white' href='https://fodor.org/tags/stack'>stack</a></span>
+	  
+	  </code>
+	  <div class="container mt-2" id="comments">
+	    
+	      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dorinfodor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	    
+	  </div>
+	</section>
+
+
+
+      </div>
+  </body><footer>
+  <div class="container-fluid bg-dark text-white text-monospace text-center mt-4">
+    <small>Copyright © 2019–2020 | Powered by <a href="https://gohugo.io">Hugo</a></small>
+  </div>
+  
+</footer>
+</html>

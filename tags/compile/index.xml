@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>compile on Dorin Fodor</title>
+    <link>https://fodor.org/tags/compile/</link>
+    <description>Recent content in compile on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Mon, 23 Dec 2019 17:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/compile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Compile Go to WebAssembly (the browser version)</title>
+      <link>https://fodor.org/blog/go-to-webassembly/</link>
+      <pubDate>Mon, 23 Dec 2019 17:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-to-webassembly/</guid>
+      <description>Introduction I don&amp;rsquo;t think many people realised yet the great possibilities we were given with the advent of WebAssembly.
+We are now essentially able to compile almost any (see list) language to WebAssembly. Which means that the range of applications that we can run in a browser, on the client side, has grown exponentially!
+For example, I would like to show you below how you can take your Go code, compile it to WebAssembly and run it natively in the browser.</description>
+    </item>
+    
+  </channel>
+</rss>

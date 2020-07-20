@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>queue on Dorin Fodor</title>
+    <link>https://fodor.org/tags/queue/</link>
+    <description>Recent content in queue on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Tue, 24 Dec 2019 18:45:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/queue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Structures in Go: Queue and Stack</title>
+      <link>https://fodor.org/blog/go-queue-and-stack/</link>
+      <pubDate>Tue, 24 Dec 2019 18:45:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/go-queue-and-stack/</guid>
+      <description>Introduction Two of the most basic data structures are the Queue and the Stack. These can be implemented in many different ways and their underlying data structures could also be of various types. Usually they are based on either linked lists or arrays.
+In our case I have chosen to base these data structures on slices, as this is a native type in Go and is very easy to manipulate (grow, slice, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

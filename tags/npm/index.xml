@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>npm on Dorin Fodor</title>
+    <link>https://fodor.org/tags/npm/</link>
+    <description>Recent content in npm on Dorin Fodor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2019–2020</copyright>
+    <lastBuildDate>Sun, 08 Dec 2019 12:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fodor.org/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How To Publish an NPM Package</title>
+      <link>https://fodor.org/blog/how-to-publish-npm-package/</link>
+      <pubDate>Sun, 08 Dec 2019 12:40:00 +0000</pubDate>
+      
+      <guid>https://fodor.org/blog/how-to-publish-npm-package/</guid>
+      <description>Introduction In essence, publishing an npm package is just one command, but there are some things that you have to take care of before doing that.
+Step-by-Step Here are the steps I followed before publishing my first package:
+ Create a free account on https://www.npmjs.com/. Log into the npm CLI by running npm login. Create a folder for your new package which would normally have the same name. Make sure that you ran npm init and have all the right values filled-in in the package.</description>
+    </item>
+    
+  </channel>
+</rss>
